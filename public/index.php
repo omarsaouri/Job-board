@@ -1,4 +1,36 @@
 <?php
+
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Include the bootstrap file
+require_once __DIR__ . '/../src/bootstrap.php';
+
+// Get the request URI
+$request_uri = $_SERVER['REQUEST_URI'];
+
+// Basic routing
+$path = trim(parse_url($request_uri, PHP_URL_PATH), '/');
+
+// Route to appropriate page
+switch ($path) {
+    case '':
+    case 'home':
+        require __DIR__ . '/pages/dashboard.php';
+        break;
+        
+    case 'dashboard':
+        require __DIR__ . '/pages/dashboard.php';
+        break;
+        
+    default:
+        // 404 page
+        http_response_code(404);
+        echo "404 - Page not found";
+        break;
+}
+
 session_start();
 
 //  If user is already logged in, redirect based on role

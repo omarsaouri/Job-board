@@ -4,3 +4,8 @@ services:
     env: docker
     buildCommand: docker build -t job-board .
     startCommand: docker run -p $PORT:80 job-board
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false

@@ -20,15 +20,10 @@ RUN a2enmod rewrite headers
 WORKDIR /var/www/html
 
 # Copy application files
-COPY . .
+COPY . /var/www/html/
 
 # Configure PHP for development
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
-
-# Enable error reporting
-RUN echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/error-reporting.ini \
-    && echo "display_errors = On" >> /usr/local/etc/php/conf.d/error-reporting.ini \
-    && echo "log_errors = On" >> /usr/local/etc/php/conf.d/error-reporting.ini
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
@@ -37,6 +32,10 @@ RUN chown -R www-data:www-data /var/www/html
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Create a symbolic link from /opt/render/project/src/public to our public directory
+RUN mkdir -p /opt/render/project/src && \
+    ln -s /var/www/html/public /opt/render/project/src/public
 
 EXPOSE 80
 CMD ["apache2-foreground"]
