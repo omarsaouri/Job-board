@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: job-board
+    env: docker
+    buildCommand: docker build -t job-board .
+    startCommand: docker run -p $PORT:80 job-board
