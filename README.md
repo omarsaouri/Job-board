@@ -90,27 +90,3 @@ You'll need to set up the following environment variables:
 SUPABASE_URL=your-project-url
 SUPABASE_ANON_KEY=your-anon-key
 ```
-
-## Contributing
-
-Feel free to fork this project and submit pull requests. This is an educational project meant to showcase PHP's capabilities for beginners.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Built to demonstrate PHP's learning curve
-- Created with assistance from Claude AI
-- Supabase for backend database and authentication
-- Bootstrap for responsive design
-- MAMP for local development environment
-
-## Author
-
-[Your Name]
-
-## Support
-
-For support, please open an issue in the GitHub repository.
