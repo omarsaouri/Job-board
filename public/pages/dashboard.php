@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../classes/Job.php';
-require_once '../classes/Company.php';
+require_once __DIR__ . '/../../src/classes/Job.php';
+require_once __DIR__ . '/../../src/classes/Company.php';
 
 
 $job = new Job();

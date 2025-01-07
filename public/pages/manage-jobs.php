@@ -1,7 +1,7 @@
 <?php
    session_start();
-   require_once '../classes/Job.php';
-   require_once '../classes/Application.php';
+   require_once __DIR__ . '/../../src/classes/Job.php';
+   require_once __DIR__ . '/../../src/classes/Application.php';
 
    $job = new Job();
    $role = $_SESSION['role'];

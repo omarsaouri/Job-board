@@ -1,5 +1,6 @@
 FROM php:8.1-apache
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -9,22 +10,27 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
+# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
+# Enable Apache modules
 RUN a2enmod rewrite headers
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files first to leverage Docker cache
-COPY composer.json composer.lock* ./
-
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Copy the rest of the application
+# Copy application files
 COPY . .
 
-# Set proper permissions
+# Configure PHP for development
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+# Enable error reporting
+RUN echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/error-reporting.ini \
+    && echo "display_errors = On" >> /usr/local/etc/php/conf.d/error-reporting.ini \
+    && echo "log_errors = On" >> /usr/local/etc/php/conf.d/error-reporting.ini
+
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
 # Configure Apache document root

@@ -1,5 +1,5 @@
 <?php
-require_once '../classes/Company.php';
+require_once __DIR__ . '/../../src/classes/Company.php';
 
 $company = new Company();
 

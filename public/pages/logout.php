@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../classes/User.php';
+require_once __DIR__ . '/../../src/classes/User.php';
 
 // Clear all session variables
 $_SESSION = array();

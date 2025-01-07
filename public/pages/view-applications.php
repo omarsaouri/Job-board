@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../classes/Job.php';
-require_once '../classes/Application.php';
+require_once __DIR__ . '/../../src/classes/Job.php';
+require_once __DIR__ . '/../../src/classes/Application.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'employer') {
     header('Location: login.php');

@@ -1,6 +1,7 @@
 <?php
     
-    require_once '../config/supabase.php';
+    require_once __DIR__ . '/../config/supabase.php';
+
 
     Class Company {
         private $supabase;

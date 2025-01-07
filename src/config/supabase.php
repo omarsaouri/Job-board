@@ -20,7 +20,7 @@ class SupabaseConfig {
 
     private function loadEnv() {
         // Load .env file from the root directory
-        $envFile = __DIR__ . '/.env';
+        $envFile = __DIR__ . '/../../.env';
         if (!file_exists($envFile)) {
             throw new Exception('.env file not found');
         }

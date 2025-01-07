@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../classes/Job.php';
+require_once __DIR__ . '/../../src/classes/Job.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');

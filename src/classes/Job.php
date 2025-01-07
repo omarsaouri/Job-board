@@ -1,6 +1,7 @@
 <?php
     // classes/Job.php
-    require_once '../config/supabase.php';
+    require_once __DIR__ . '/../config/supabase.php';
+
     class Job {
         private $supabase;
 
