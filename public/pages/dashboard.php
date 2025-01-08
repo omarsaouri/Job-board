@@ -17,10 +17,10 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
 // Get user role
 $role = $_SESSION['role'];
 $userId = $_SESSION['user_id'];
-$companyId = $_SESSION['company_id'];
 
 // For employers, check company association
 if ($role === 'employer') {
+    $companyId = $_SESSION['company_id'];
     // Check if we already have company_id in session
     if (!isset($_SESSION['company_id'])) {
         // Try to fetch company data
