@@ -15,6 +15,9 @@ RUN a2enmod rewrite headers
 WORKDIR /var/www/html
 COPY . /var/www/html/
 
+RUN echo '<?php header("Location: /login.php"); ?>' > /var/www/html/public/pages/index.php
+
+
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 RUN chown -R www-data:www-data /var/www/html
 
